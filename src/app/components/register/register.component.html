@@ -1,0 +1,67 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 p-t-50 p-b-90">
+      <form class="login100-form validate-form flex-sb flex-w">
+        <span class="login100-form-title p-b-51">
+            Create an Account
+        </span>
+
+        <!-- <span class="text-danger">Email is required</span> -->
+        <div class="wrap-input100 m-b-16">
+          <input class="input100"
+                 type="text"
+                 name="email"
+                 placeholder="Email">
+
+          <span class="focus-input100"></span>
+        </div>
+
+        <!-- <span class="text-danger">The name is required</span> -->
+        <div class="wrap-input100 m-b-16">
+          <input class="input100"
+                 type="text"
+                 name="name"
+                 placeholder="Username">
+
+          <span class="focus-input100"></span>
+        </div>
+
+        <!-- <span class="text-danger">Password must be more than 6 letters</span> -->
+        <div class="wrap-input100 m-b-16" data-validate = "Password is required">
+          <input class="input100"
+                 type="password"
+                 name="pass"
+                 placeholder="Password">
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="flex-sb-m w-full p-t-3 p-b-24">
+
+          <div>
+            <label class="rm-checkbox" for="ckb1">
+            <input  id="ckb1" type="checkbox" name="remember-me">
+              <i class="fa-fw far fa-square unchecked fs-25" data-fa-transform="down-2"></i>
+              <i class="fa-fw far fa-check-square checked fs-25" data-fa-transform="down-2"></i>
+              <a class="txt1">
+                Remember me
+              </a>
+            </label>
+          </div>
+
+          <div class="txt2">
+            Have an account?
+            <a class="txt3" routerLink="/login">Log in now</a>
+          </div>
+
+        </div>
+
+        <div class="container-login100-form-btn m-t-17">
+          <button class="login100-form-btn" type="submit">
+            Create account
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
