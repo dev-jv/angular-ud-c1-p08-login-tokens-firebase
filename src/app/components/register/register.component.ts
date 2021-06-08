@@ -1,5 +1,6 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {UserModel} from '../../models/user.model';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -18,9 +19,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(): any {
+  onSubmit(form: NgForm): any {
+
+    if (form.invalid) {
+      return;
+    }
+
     console.log('Form send');
     console.log(this.user);
+    console.log(form);
   }
 
 }
