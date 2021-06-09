@@ -8,7 +8,8 @@
             Create an Account
         </span>
 
-        <!-- <span class="text-danger">Email is required</span> -->
+         <span *ngIf="regForm.submitted && regForm.controls['email'].errors"
+           class="text-danger animated fadeIn">Email is required</span>
         <div class="wrap-input100 m-b-16">
           <input class="input100"
                  type="email"
@@ -21,7 +22,8 @@
           <span class="focus-input100"></span>
         </div>
 
-        <!-- <span class="text-danger">The name is required</span> -->
+        <span *ngIf="regForm.submitted && regForm.controls['name'].errors"
+              class="text-danger animated fadeIn">The name is required</span>
         <div class="wrap-input100 m-b-16">
           <input class="input100"
                  type="text"
@@ -34,14 +36,15 @@
           <span class="focus-input100"></span>
         </div>
 
-        <!-- <span class="text-danger">Password must be more than 6 letters</span> -->
+        <span *ngIf="regForm.submitted && regForm.controls['pass'].errors"
+              class="text-danger animated fadeIn">Password must be more than 6 letters</span>
         <div class="wrap-input100 m-b-16" data-validate = "Password is required">
           <input class="input100"
                  type="password"
                  name="pass"
                  [(ngModel)]="user.password"
                  required
-                 minlength="8"
+                 minlength="6"
                  placeholder="Password">
           <span class="focus-input100"></span>
         </div>
