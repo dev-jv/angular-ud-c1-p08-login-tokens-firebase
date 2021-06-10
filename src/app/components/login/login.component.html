@@ -1,27 +1,37 @@
-<div class="limiter">
+<div class="limiter animated fadeInLeft">
   <div class="container-login100">
     <div class="wrap-login100 p-t-50 p-b-90">
-      <form class="login100-form validate-form flex-sb flex-w">
 
-                <span class="login100-form-title p-b-51">
-                    Log In
-                </span>
+      <form (ngSubmit)="login(logForm)"
+            #logForm="ngForm"
+        class="login100-form validate-form flex-sb flex-w">
 
-        <!-- <span class="text-danger">Email is required</span> -->
+        <span class="login100-form-title p-b-51">Log In</span>
+
+        <span *ngIf="logForm.submitted && logForm.controls['ema'].errors"
+              class="text-danger animated fadeIn">The email is required</span>
+
         <div class="wrap-input100 m-b-16">
           <input class="input100"
                  type="text"
-                 name="username"
-                 placeholder="Username">
-
+                 name="ema"
+                 [(ngModel)]="user.email"
+                 required
+                 email
+                 placeholder="Email">
           <span class="focus-input100"></span>
         </div>
 
-        <!-- <span class="text-danger">Password must be more than 6 letters</span> -->
-        <div class="wrap-input100 m-b-16" data-validate = "Password is required">
+        <span *ngIf="logForm.submitted && logForm.controls['pss'].errors"
+              class="text-danger animated fadeIn">Password must be more than 6 letters</span>
+
+        <div class="wrap-input100 m-b-16" data-validate="Password is required">
           <input class="input100"
                  type="password"
-                 name="pass"
+                 name="pss"
+                 [(ngModel)]="user.password"
+                 required
+                 minlength="6"
                  placeholder="Password">
           <span class="focus-input100"></span>
         </div>
@@ -47,7 +57,7 @@
         </div>
 
         <div class="container-login100-form-btn m-t-17">
-          <button class="login100-form-btn" type="submit">
+          <button class="login100-form-btn" type="submit" >
             Log In
           </button>
         </div>

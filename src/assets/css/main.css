@@ -189,7 +189,7 @@ iframe {
 .login100-form-title {
   /*font-family: Ubuntu-Bold;*/
   /*font-family: Inter, 'Open Sans', sans-serif;*/
-  font-family: "Corbel Light","Dubai Light";
+  font-family: "Corbel Light", "Dubai Light", sans-serif;
   font-size: 30px;
   color: #403866;
   line-height: 1.2;
@@ -213,15 +213,28 @@ iframe {
 /*---------------------------------------------*/
 .input100 {
   /*font-family: Ubuntu-Bold;*/
-  font-family: "Calibri Light";
+  font-family: "Calibri Light", sans-serif;
   line-height: 1.2;
-  font-size: 18px;
+  font-size: 17px;
   display: block;
   width: 100%;
   background: #FBFCFC;
-  height: 62px;
+  height: 50px;
   padding: 0 20px 0 38px;
 }
+
+.input100x {
+  /*font-family: Ubuntu-Bold;*/
+  font-family: "Calibri Light", sans-serif;
+  line-height: 1.2;
+  font-size: 17px;
+  display: block;
+  width: 100%;
+  background: #FBFCFC;
+  height: 50px;
+  padding: 0 10px 0 15px;
+}
+
 /*------------------------------------------------------------------
 [ Focus Input ]*/
 
@@ -234,7 +247,8 @@ iframe {
   left: -1px;
   pointer-events: none;
   /*border: 1px solid #827ffe;*/
-  border: 1px solid red;
+  /*border: 1px solid red;*/
+  border: 1px solid black;
   border-radius: 3px;
   visibility: hidden;
   opacity: 0;
@@ -273,6 +287,18 @@ iframe {
   transform: scale(1);
 }
 
+
+
+.input100x:focus + .focus-input100 {
+  visibility: visible;
+  opacity: 1;
+
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
 /*==================================================================
 [ Restyle Checkbox ]*/
 

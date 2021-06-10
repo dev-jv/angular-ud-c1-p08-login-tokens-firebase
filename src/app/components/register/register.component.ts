@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   constructor() {
     this.user = new UserModel();
-    this.user.email = 'drac.1000@gmail.com';
+    // this.user.email = 'drac.1000@gmail.com';
   }
 
   ngOnInit(): void {

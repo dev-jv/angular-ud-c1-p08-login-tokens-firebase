@@ -1,50 +1,91 @@
-<div class="limiter">
+<div class="limiter animated fadeInRight">
   <div class="container-login100">
     <div class="wrap-login100 p-t-50 p-b-90">
+
       <form (ngSubmit)="onSubmit(regForm)"
             #regForm="ngForm"
             class="login100-form validate-form flex-sb flex-w">
-        <span class="login100-form-title p-b-51">
-            Create an Account
-        </span>
 
-         <span *ngIf="regForm.submitted && regForm.controls['email'].errors"
-           class="text-danger animated fadeIn">Email is required</span>
-        <div class="wrap-input100 m-b-16">
-          <input class="input100"
-                 type="email"
-                 name="email"
-                 [(ngModel)]="user.email"
-                 required
-                 email
-                 placeholder="Email">
+        <span class="login100-form-title p-b-51">Create an Account</span>
 
-          <span class="focus-input100"></span>
+        <span *ngIf="regForm.submitted && (regForm.controls['fnm'].errors || regForm.controls['lnm'].errors)"
+              class="text-danger animated fadeIn">The name is required</span>
+
+        <div class="container m-b-16">
+          <div class="row">
+
+            <div class="col-4 box1" style="padding: 0 15px 0 0">
+              <div class="wrap-input100">
+                <input class="input100x"
+                       type="text"
+                       name="fnm"
+                       [(ngModel)]="user.firstName"
+                       required
+                       minlength="2"
+                       autocomplete="of"
+                       placeholder="First Name">
+                <span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <div class="col-8 box2" style="padding: 0">
+              <div class="wrap-input100">
+                <input class="input100x"
+                       type="text"
+                       name="lnm"
+                       [(ngModel)]="user.lastName"
+                       required
+                       minlength="4"
+                       autocomplete="off"
+                       placeholder="Last Name">
+                <span class="focus-input100"></span>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <span *ngIf="regForm.submitted && regForm.controls['name'].errors"
-              class="text-danger animated fadeIn">The name is required</span>
+        <span *ngIf="regForm.submitted && regForm.controls['usn'].errors"
+              class="text-danger animated fadeIn">The username is required</span>
+
         <div class="wrap-input100 m-b-16">
           <input class="input100"
                  type="text"
-                 name="name"
-                 [(ngModel)]="user.name"
+                 name="usn"
+                 [(ngModel)]="user.userName"
                  required
                  minlength="2"
+                 autocomplete="off"
                  placeholder="Username">
-
           <span class="focus-input100"></span>
         </div>
 
-        <span *ngIf="regForm.submitted && regForm.controls['pass'].errors"
+         <span *ngIf="regForm.submitted && regForm.controls['ema'].errors"
+           class="text-danger animated fadeIn">The email is required</span>
+
+        <div class="wrap-input100 m-b-16">
+          <input class="input100"
+                 type="email"
+                 name="ema"
+                 [(ngModel)]="user.email"
+                 required
+                 email
+                 autocomplete="on"
+                 placeholder="Email">
+          <span class="focus-input100"></span>
+        </div>
+
+        <span *ngIf="regForm.submitted && regForm.controls['pss'].errors"
               class="text-danger animated fadeIn">Password must be more than 6 letters</span>
-        <div class="wrap-input100 m-b-16" data-validate = "Password is required">
+
+        <div class="wrap-input100 m-b-16" data-validate="Password is required">
           <input class="input100"
                  type="password"
-                 name="pass"
+                 name="pss"
                  [(ngModel)]="user.password"
                  required
                  minlength="6"
+                 autocomplete="off"
                  placeholder="Password">
           <span class="focus-input100"></span>
         </div>
@@ -53,7 +94,7 @@
 
           <div>
             <label class="rm-checkbox" for="ckb1">
-            <input  id="ckb1" type="checkbox" name="remember-me">
+            <input id="ckb1" type="checkbox" name="remember-me">
               <i class="fa-fw far fa-square unchecked fs-25" data-fa-transform="down-2"></i>
               <i class="fa-fw far fa-check-square checked fs-25" data-fa-transform="down-2"></i>
               <a class="txt1">
