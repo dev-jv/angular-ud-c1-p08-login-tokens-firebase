@@ -24,6 +24,15 @@ export class AuthService {
 
     logIn(user: UserModel): any {
 
+      const authData = {
+        ...user,
+        // email: user.email,
+        // password: user.password,
+        returnSecureToken: true
+      };
+
+      return this.http.post(`${this.url}:signInWithPassword?key=${this.apikey}`, authData);
+
     }
 
     register(user: UserModel): any {
@@ -37,5 +46,5 @@ export class AuthService {
 
       return this.http.post(`${this.url}:signUp?key=${this.apikey}`, authData);
 
-      }
     }
+}
