@@ -1,7 +1,11 @@
-import {Component, OnInit, Output} from '@angular/core';
-import {UserModel} from '../../models/user.model';
-import {NgForm} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
+import { Component, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { UserModel } from '../../models/user.model';
+import { AuthService } from '../../services/auth.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +16,8 @@ export class RegisterComponent implements OnInit {
 
   user: UserModel;
 
-  constructor( private auth: AuthService) {
+  constructor( private auth: AuthService,
+               private router: Router) {
     this.user = new UserModel();
     // this.user.email = 'drac.1000@gmail.com';
   }
@@ -26,10 +31,25 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Wait a moment...'
+    });
+
+    Swal.showLoading();
+
     this.auth.register(this.user).subscribe((resp: any) => {
       console.log(resp);
+      Swal.close();
+      this.router.navigateByUrl('/home');
     }, (e: any) => {
       console.error(e.error.error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Authentication error',
+        text: e.error.error.message
+      });
     });
 
     // console.log('Form send');
