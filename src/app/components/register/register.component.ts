@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
 
   user: UserModel;
 
+  remember = false;
+
   constructor( private auth: AuthService,
                private router: Router) {
     this.user = new UserModel();
@@ -42,6 +44,12 @@ export class RegisterComponent implements OnInit {
     this.auth.register(this.user).subscribe((resp: any) => {
       console.log(resp);
       Swal.close();
+
+      if ( this.remember ) {
+        this.user.email = this.user.email || '';
+        localStorage.setItem('email', this.user.email);
+      }
+
       this.router.navigateByUrl('/home');
     }, (e: any) => {
       console.error(e.error.error.message);
