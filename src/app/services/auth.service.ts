@@ -24,7 +24,7 @@ export class AuthService {
     }
 
     logOut(): any {
-
+      localStorage.removeItem('token');
     }
 
     logIn(user: UserModel): any {
@@ -68,6 +68,11 @@ export class AuthService {
     private saveToken( idToken: string ): any {
       this.userToken = idToken;
       localStorage.setItem('token', idToken);
+
+      const lastIn = new Date();
+      lastIn.setSeconds( 3600 );
+
+      localStorage.setItem('expiresTI', lastIn.getTime().toString()); // In milliseconds
     }
 
     readToken(): any {
@@ -81,7 +86,19 @@ export class AuthService {
     }
 
     isAuthenticated(): boolean {
-      return this.userToken.length > 2;
-    }
+      if ( this.userToken.length < 2 ) {
+        return false;
+      }
 
+      const remTime = Number(localStorage.getItem('expiresTI')); // Remaining Time in milliseconds
+
+      const updTime = new Date();
+      updTime.setTime(remTime); // Updating Time to Remaining Time
+
+      if ( updTime > new Date() ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
 }
