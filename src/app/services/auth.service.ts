@@ -11,7 +11,7 @@ export class AuthService {
   private url = 'https://identitytoolkit.googleapis.com/v1/accounts';
   private apikey = 'AIzaSyCKyZt44Rxee_7RUaNXtOwzt0t_IipX7Yg';
 
-  private userToken?: string | null;
+  private userToken = '';
 
   // Sign up with email / password
   // https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
@@ -72,12 +72,16 @@ export class AuthService {
 
     readToken(): any {
       if (localStorage.getItem('token')) {
-        this.userToken = localStorage.getItem('token');
+        this.userToken = localStorage.getItem('token') || '';
       } else {
         this.userToken = '';
       }
 
       return this.userToken;
+    }
+
+    isAuthenticated(): boolean {
+      return this.userToken.length > 2;
     }
 
 }
